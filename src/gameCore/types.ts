@@ -13,3 +13,9 @@ export interface Card {
 }
 
 export type SlotNumber = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+
+export interface Player {
+  id: string;
+  name: string;
+  cardsWon: Card[];
+}

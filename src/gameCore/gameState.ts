@@ -1,12 +1,14 @@
 import { makeDeck } from "./deck";
 import { Phase } from "./phase";
-import { Card, SlotNumber } from "./types";
+import { makePlayers } from "./players";
+import { Card, Player, SlotNumber } from "./types";
 
 export interface GameState {
   deck: Card[];
   inPlayCards: Card[];
   markerPos: SlotNumber | null;
   phase: Phase;
+  players: Player[];
 }
 
 export function createInitialState(): GameState {
@@ -16,11 +18,12 @@ export function createInitialState(): GameState {
     .map((c) => ({ ...c, isFaceUp: true }));
 
   const deck = allCards.slice(8);
-
+  const players = makePlayers(2);
   return {
     deck,
     inPlayCards,
     phase: "Memorise",
     markerPos: null,
+    players,
   };
 }
