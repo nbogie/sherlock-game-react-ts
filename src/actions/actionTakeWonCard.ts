@@ -1,4 +1,5 @@
 import { GameState } from "../gameCore/gameState";
+import { addCardToPlayerWinnings } from "../gameCore/players";
 import { Card, SlotNumber } from "../gameCore/types";
 
 export function actionTakeWonCard(
@@ -22,6 +23,11 @@ export function actionTakeWonCard(
     deck: newDeck,
     inPlayCards: newInPlayCards,
     markerPos: null,
+    players: gameState.players.map((p) =>
+      p.id === gameState.currentPlayerId
+        ? addCardToPlayerWinnings(wonCard, p)
+        : p
+    ),
     phase: "WaitEndTurnAck",
   };
 }
