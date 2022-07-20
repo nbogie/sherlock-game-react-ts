@@ -1,3 +1,16 @@
+# "Sherlock"
+
+A rough, incomplete, completely unofficial implementation of the card game, "Sherlock" by Reinhard Staupe. The card game was published by Staupe Spiele (1999).
+
+This is just meant as a React and CSS practice project.
+
+## TODO:
+
+- [ ] add the concept of players
+- [ ] add game over
+- [ ] Don't allow the player to move the marker just anywhere
+- [ ] animations
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
