@@ -1,11 +1,10 @@
-import React from 'react';
 import './App.css';
-import { CardRingView } from './components/CardRingView';
+import { MemoryRingGame } from './components/MemoryRingGame';
 
 function App() {
   return (
     <div className="App">
-      <CardRingView />
+      <MemoryRingGame />
     </div>
   );
 }
