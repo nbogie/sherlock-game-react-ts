@@ -19,3 +19,5 @@ export interface Player {
   name: string;
   cardsWon: Card[];
 }
+
+export type NumberOfPlayers = 1 | 2 | 3 | 4 | 5;

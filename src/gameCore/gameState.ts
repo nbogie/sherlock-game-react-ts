@@ -1,7 +1,7 @@
 import { makeDeck } from "./deck";
 import { Phase } from "./phase";
 import { makePlayers } from "./players";
-import { Card, Player, SlotNumber } from "./types";
+import { Card, NumberOfPlayers, Player, SlotNumber } from "./types";
 
 export interface GameState {
   deck: Card[];
@@ -12,14 +12,14 @@ export interface GameState {
   currentPlayerId: string;
 }
 
-export function createInitialState(): GameState {
+export function createInitialState(numPlayers: NumberOfPlayers): GameState {
   const allCards = makeDeck();
   const inPlayCards = allCards
     .slice(0, 8)
     .map((c) => ({ ...c, isFaceUp: true }));
 
   const deck = allCards.slice(8);
-  const players = makePlayers(2);
+  const players = makePlayers(numPlayers);
   return {
     deck,
     inPlayCards,

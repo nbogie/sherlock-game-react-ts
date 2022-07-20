@@ -2,12 +2,16 @@ import { useReducer } from "react";
 import { reducerFunction } from "../actions/reducerFunction";
 import { cardAtPos } from "../gameCore/deck";
 import { createInitialState, GameState } from "../gameCore/gameState";
-import { Card } from "../gameCore/types";
+import { Card, NumberOfPlayers } from "../gameCore/types";
 import { CardRingView } from "./CardRingView";
 import { PlayersView } from "./PlayersView";
 
-export function MemoryRingGame() {
-    const initialState: GameState = createInitialState();
+interface MemoryRingGameProps {
+    numPlayers: NumberOfPlayers;
+}
+
+export function MemoryRingGame(props: MemoryRingGameProps) {
+    const initialState: GameState = createInitialState(props.numPlayers);
     const [gameState, dispatch] = useReducer(reducerFunction, initialState);
 
     function handleStart() {
