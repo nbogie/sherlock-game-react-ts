@@ -1,21 +1,35 @@
-import { pick, shuffle } from "./collectionUtils";
-import { Card, SlotNumber } from "./types";
+import { collect, shuffle } from "./collectionUtils";
+import { Card, Movement, MovementAmount, SlotNumber } from "./types";
 
 export function makeDeck(): Card[] {
-  const allEmojis =
-    "🐶 🦁 🚁 ❤️ 🌈 🧲 ⏰ ⚽️ ❤️ 🔒 🍀 🍦 💎 🎁 ✂️ 🏴‍☠️ 🎈 🏓 🍫 🍰 🍕 🍓 🍉 🥕 ☃️ 🌼 🍄 🐚 🐝 🐤 👓 🎩 🎓".split(
-      " "
-    );
-  //TODO: have a fixed distribution of left, right and number, not random.
+  const allEmojis: string[] =
+    "🐶 🦁 🦊 🐝 🐤 🦄 🦖 🐲 🎺 🚁 ❤️ 🌈 ⚽️ 🍀 💎 🎁 🏴‍☠️ 🎈 🏓 ☃️ 🌼 🍄 🐚 👓 🎩 🎓 👑 🎃 🍫 🍰 🍕 🍓 🍉 🥕 🍭 🍦 👢 🧤 🪚 📸 🔒 ✂️ 🧲 ⏰ 🩺 🪣 ✏️ 🔑 💡"
+      .split(" ")
+      .slice(0, 49); //there should be 49 here, anyway.
+
+  const distributions: [number, MovementAmount][] = [
+    [13, 1],
+    [13, 2],
+    [13, 3],
+    [10, 4],
+  ];
+
+  const movements: Movement[] = [];
+  for (const [count, value] of distributions) {
+    const set: Movement[] = collect(count, (ix) => ({
+      direction: ix < count / 2 ? "left" : "right",
+      amount: value,
+    }));
+    movements.push(...set);
+  }
+
+  const shuffledMovements = shuffle([...movements]);
   return shuffle([...allEmojis]).map((emoji, index) => {
     return {
       emoji,
       id: index + 1,
       isFaceUp: false,
-      movement: {
-        direction: pick(["left", "right"]),
-        amount: pick([1, 2, 3, 4]),
-      },
+      movement: { ...shuffledMovements[index] },
     };
   });
 }
