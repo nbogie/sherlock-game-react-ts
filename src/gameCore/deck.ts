@@ -11,6 +11,7 @@ export function makeDeck(): Card[] {
     return {
       emoji,
       id: index + 1,
+      isFaceUp: false,
       movement: {
         direction: pick(["left", "right"]),
         amount: pick([1, 2, 3, 4]),

@@ -3,6 +3,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 3rem;
+  --cardShadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -65,9 +66,16 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--cardShadow);
   user-select: none;
   cursor: pointer;
+}
+
+.card.faceDown {
+  /* https://www.magicpattern.design/tools/css-backgrounds */
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background: repeating-linear-gradient(-45deg, #afb3ff, #afb3ff 5px, #e5e5f7 5px, #e5e5f7 25px);
 }
 
 .marker {
@@ -95,4 +103,29 @@ body {
 .pictureArea {
   font-size: 5rem;
   text-align: center;
+}
+
+button {
+  font-size: 3rem;
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px;
+  margin: 5px;
+}
+
+.filled {
+  box-shadow: var(--cardShadow);
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }

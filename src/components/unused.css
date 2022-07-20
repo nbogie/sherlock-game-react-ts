@@ -1,0 +1,15 @@
+.card.faceDownFancyUnused {
+    background-color: white;
+    background-image:
+        radial-gradient(rgb(114, 114, 148) 5px, transparent 6px),
+        repeating-radial-gradient(rgb(79, 79, 122) 0,
+            rgb(90, 90, 157) 2px,
+            transparent 3px,
+            transparent 10px,
+            rgb(60, 60, 105) 11px,
+            rgb(69, 69, 107) 13px,
+            transparent 14px,
+            transparent 25px);
+    background-size: 15px 15px, 45px 45px;
+    background-position: 11px -0px;
+}
