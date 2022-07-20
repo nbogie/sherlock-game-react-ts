@@ -5,4 +5,6 @@ export type Phase =
   | "Flipped"
   | "MoveMarker"
   | "HideAll"
-  | "TakeCard";
+  | "TakeCard"
+  | "WaitForCardWinAck"
+  | "WaitEndTurnAck";

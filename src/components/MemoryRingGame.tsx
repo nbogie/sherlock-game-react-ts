@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { reducerFunction } from "../actions/reducerFunction";
+import { cardAtPos } from "../gameCore/deck";
 import { createInitialState, GameState } from "../gameCore/gameState";
 import { Card } from "../gameCore/types";
 import { CardRingView } from "./CardRingView";
@@ -20,13 +21,22 @@ export function MemoryRingGame() {
     function handleEndTurn() {
         dispatch({ type: "end-turn" });
     }
+    function handleTakeWonCard() {
+        if (!gameState.markerPos) {
+            throw new Error("null markerPos during handling of takeWonCard");
+        }
+        dispatch({ type: "take-won-card", slotNumber: gameState.markerPos, card: cardAtPos(gameState.inPlayCards, gameState.markerPos) });
+    }
+
+
     return (
         <div className="memoryRingGame">
             Game Phase: {gameState.phase}
             <div className="controls">
                 {gameState.phase === "Memorise" && <button onClick={handleStart}>Memorised - Hide them!</button>}
-                {gameState.phase === "Flipped" && <button onClick={handleEndTurn}>End Turn!</button>}
+                {(gameState.phase === "Flipped" || gameState.phase === "WaitEndTurnAck") && <button onClick={handleEndTurn}>End Turn!</button>}
                 {gameState.phase === "Flipped" && <button onClick={handleGoodGuess}>I guessed ok!</button>}
+                {gameState.phase === "WaitForCardWinAck" && <button onClick={handleTakeWonCard}>Take won card!</button>}
                 {<button onClick={handleUnhideAll}>Unhide all!</button>}
             </div>
             <CardRingView

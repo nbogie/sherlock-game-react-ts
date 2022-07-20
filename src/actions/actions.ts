@@ -7,7 +7,8 @@ export type Action =
   | UnhideAllAction
   | FlipCardAction
   | EndTurnAction
-  | AckGoodGuessAction;
+  | AckGoodGuessAction
+  | TakeWonCardAction;
 
 export interface HideAllAction {
   type: "hide-all";
@@ -37,4 +38,10 @@ export interface AckGoodGuessAction {
 }
 export interface EndTurnAction {
   type: "end-turn";
+}
+
+export interface TakeWonCardAction {
+  type: "take-won-card";
+  slotNumber: SlotNumber;
+  card: Card;
 }

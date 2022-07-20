@@ -1,5 +1,5 @@
 import { pick, shuffle } from "./collectionUtils";
-import { Card } from "./types";
+import { Card, SlotNumber } from "./types";
 
 export function makeDeck(): Card[] {
   const allEmojis =
@@ -18,4 +18,15 @@ export function makeDeck(): Card[] {
       },
     };
   });
+}
+
+export function cardAlreadyFlippedAt(
+  inPlayCards: Card[],
+  slotNum: SlotNumber
+): boolean {
+  return inPlayCards[slotNum].isFaceUp;
+}
+
+export function cardAtPos(inPlayCards: Card[], slotNum: SlotNumber): Card {
+  return inPlayCards[slotNum];
 }
