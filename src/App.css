@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 3rem;
+}
+
+
+.cardRing {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  /* border: 3px solid blue; */
+}
+
+.card {
+  --circleSize: -15rem;
+}
+
+.marker {
+  --circleSize: -27rem;
+}
+
+.rot0 {
+  transform: rotate(0deg) translate(0rem, var(--circleSize));
+}
+
+.rot45 {
+  transform: rotate(45deg) translate(0rem, var(--circleSize));
+}
+
+.rot90 {
+  transform: rotate(90deg) translate(0rem, var(--circleSize));
+}
+
+.rot135 {
+  transform: rotate(135deg) translate(0rem, var(--circleSize));
+}
+
+.rot180 {
+  transform: rotate(180deg) translate(0rem, var(--circleSize));
+}
+
+.rot225 {
+  transform: rotate(225deg) translate(0rem, var(--circleSize));
+}
+
+.rot270 {
+  transform: rotate(270deg) translate(0rem, var(--circleSize));
+}
+
+.rot315 {
+  transform: rotate(315deg) translate(0rem, var(--circleSize));
+}
+
+.card {
+  position: absolute;
+  left: -3.5rem;
+  top: -5.5rem;
+  border: 3px solid gray;
+  border-radius: 8px;
+  width: 7rem;
+  height: 11rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  cursor: pointer;
+}
+
+.marker {
+  position: absolute;
+  left: -3.5rem;
+  top: -5.5rem;
+  border: 3px dashed gray;
+  border-radius: 8px;
+  width: 7rem;
+  height: 11rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /*     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); */
+  user-select: none;
+  cursor: pointer;
+}
+
+.pictureArea,
+.arrowBar {
+  /*     border: 2px solid red; */
+}
+
+.pictureArea {
+  font-size: 5rem;
+  text-align: center;
+}
