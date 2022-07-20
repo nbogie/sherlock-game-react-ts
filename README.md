@@ -1,4 +1,4 @@
-# "Sherlock"
+# "Sherlock" unofficial
 
 A rough, incomplete, completely unofficial implementation of the card game, "Sherlock" by Reinhard Staupe. The card game was published by Staupe Spiele (1999).
 
