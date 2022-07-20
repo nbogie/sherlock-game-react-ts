@@ -12,7 +12,7 @@ export function actionTakeWonCard(
     throw new Error("deck ran out - that should be impossible!");
   }
   const newInPlayCards = gameState.inPlayCards.map((c) =>
-    c.id === wonCard.id ? newCard : c
+    c.id === wonCard.id ? { ...newCard, isFaceUp: true } : c
   );
 
   return {

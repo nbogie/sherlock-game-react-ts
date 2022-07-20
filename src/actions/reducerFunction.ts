@@ -1,6 +1,5 @@
 import { GameState } from "../gameCore/gameState";
 import { Phase } from "../gameCore/phase";
-import { actionAckGoodGuess } from "./actionAckGoodGuess";
 import { actionEndTurn } from "./actionEndTurn";
 import { actionFlipCard } from "./actionFlipCard";
 import { actionHideAll } from "./actionHideAll";
@@ -19,8 +18,7 @@ export function reducerFunction(
       "place-marker": ["InitialPlacement", "MoveMarker"],
       "unhide-all": "any",
       "flip-card": "Guess",
-      "ack-good-guess": "Flipped",
-      "end-turn": ["Flipped", "WaitEndTurnAck"],
+      "end-turn": ["MoveMarker", "WaitEndTurnAck"],
       "take-won-card": "WaitForCardWinAck",
     };
 
@@ -48,9 +46,6 @@ export function reducerFunction(
     }
     case "end-turn": {
       return actionEndTurn(gameState);
-    }
-    case "ack-good-guess": {
-      return actionAckGoodGuess(gameState);
     }
     case "flip-card": {
       return actionFlipCard(gameState, action.slotNumber, action.card);

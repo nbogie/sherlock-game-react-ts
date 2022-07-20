@@ -15,14 +15,11 @@ export function MemoryRingGame() {
     function handleUnhideAll() {
         dispatch({ type: "unhide-all" });
     }
-    function handleGoodGuess() {
-        dispatch({ type: "ack-good-guess" });
-    }
     function handleEndTurn() {
         dispatch({ type: "end-turn" });
     }
     function handleTakeWonCard() {
-        if (!gameState.markerPos) {
+        if (gameState.markerPos === null) {
             throw new Error("null markerPos during handling of takeWonCard");
         }
         dispatch({ type: "take-won-card", slotNumber: gameState.markerPos, card: cardAtPos(gameState.inPlayCards, gameState.markerPos) });
@@ -34,10 +31,9 @@ export function MemoryRingGame() {
             Game Phase: {gameState.phase}
             <div className="controls">
                 {gameState.phase === "Memorise" && <button onClick={handleStart}>Memorised - Hide them!</button>}
-                {(gameState.phase === "Flipped" || gameState.phase === "WaitEndTurnAck") && <button onClick={handleEndTurn}>End Turn!</button>}
-                {gameState.phase === "Flipped" && <button onClick={handleGoodGuess}>I guessed ok!</button>}
+                {(gameState.phase === "MoveMarker" || gameState.phase === "WaitEndTurnAck") && <button onClick={handleEndTurn}>End Turn!</button>}
                 {gameState.phase === "WaitForCardWinAck" && <button onClick={handleTakeWonCard}>Take won card!</button>}
-                {<button onClick={handleUnhideAll}>Unhide all!</button>}
+                {<button onClick={handleUnhideAll}>Unhide all! (Cheat)</button>}
             </div>
             <CardRingView
                 inPlayCards={gameState.inPlayCards}

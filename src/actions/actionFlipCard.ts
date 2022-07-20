@@ -13,6 +13,6 @@ export function actionFlipCard(
     inPlayCards: gameState.inPlayCards.map((c) =>
       c.id === card.id ? { ...c, isFaceUp: true } : { ...c }
     ),
-    phase: "Flipped",
+    phase: "MoveMarker",
   };
 }
