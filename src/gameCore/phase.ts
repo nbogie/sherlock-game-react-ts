@@ -2,7 +2,7 @@ export type Phase =
   | "Memorise"
   | "InitialPlacement"
   | "Guess"
-  | "Flip"
+  | "Flipped"
   | "MoveMarker"
   | "HideAll"
   | "TakeCard";

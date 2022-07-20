@@ -2,6 +2,7 @@ import { Card, SlotNumber } from "../gameCore/types";
 
 interface CardRingViewProps {
     handleMarkerClick: (slotNumber: SlotNumber, card: Card) => void;
+    handleCardClick: (slotNumber: SlotNumber, card: Card) => void;
     inPlayCards: Card[];
     markerSlotNumber: SlotNumber | null;
 }
@@ -16,6 +17,7 @@ export function CardRingView(props: CardRingViewProps) {
                     <div
                         className={"card " + facingClass + " rot" + (index * 45)}
                         key={card.id}
+                        onClick={() => props.handleCardClick(index as SlotNumber, card)}
                     >
                         {card.isFaceUp ? <>
                             <div className="arrowBar">{card.movement.amount} {card.movement.direction === "left" ? "⬅" : "➡"}</div>
