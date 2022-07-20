@@ -4,6 +4,7 @@ import { cardAtPos } from "../gameCore/deck";
 import { createInitialState, GameState } from "../gameCore/gameState";
 import { Card } from "../gameCore/types";
 import { CardRingView } from "./CardRingView";
+import { PlayersView } from "./PlayersView";
 
 export function MemoryRingGame() {
     const initialState: GameState = createInitialState();
@@ -25,7 +26,6 @@ export function MemoryRingGame() {
         dispatch({ type: "take-won-card", slotNumber: gameState.markerPos, card: cardAtPos(gameState.inPlayCards, gameState.markerPos) });
     }
 
-
     return (
         <div className="memoryRingGame">
             Game Phase: {gameState.phase}
@@ -35,6 +35,10 @@ export function MemoryRingGame() {
                 {gameState.phase === "WaitForCardWinAck" && <button onClick={handleTakeWonCard}>Take won card!</button>}
                 {<button onClick={handleUnhideAll}>Unhide all! (Cheat)</button>}
             </div>
+            <PlayersView
+                players={gameState.players}
+                currentPlayerId={gameState.currentPlayerId}
+            />
             <CardRingView
                 inPlayCards={gameState.inPlayCards}
                 handleMarkerClick={(slotNumber, card: Card) => { dispatch({ type: "place-marker", slotNumber }) }}

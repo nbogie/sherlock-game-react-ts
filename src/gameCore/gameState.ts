@@ -9,6 +9,7 @@ export interface GameState {
   markerPos: SlotNumber | null;
   phase: Phase;
   players: Player[];
+  currentPlayerId: string;
 }
 
 export function createInitialState(): GameState {
@@ -25,5 +26,6 @@ export function createInitialState(): GameState {
     phase: "Memorise",
     markerPos: null,
     players,
+    currentPlayerId: players[0].id,
   };
 }

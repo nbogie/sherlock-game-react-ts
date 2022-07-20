@@ -136,3 +136,15 @@ button {
   justify-content: flex-start;
   align-items: flex-start;
 }
+
+.player.active {
+  /* border: 2px solid red; */
+}
+
+.player.inactive {
+  opacity: 0.5;
+}
+
+span.active {
+  font-weight: bold;
+}
