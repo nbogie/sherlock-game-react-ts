@@ -4,6 +4,7 @@ import { actionEndTurn } from "./actionEndTurn";
 import { actionFlipCard } from "./actionFlipCard";
 import { actionHideAll } from "./actionHideAll";
 import { actionPlaceMarker } from "./actionPlaceMarker";
+import { actionRevealAfterGameOver } from "./actionRevealAfterGameOver";
 import { Action } from "./actions";
 import { actionTakeWonCard } from "./actionTakeWonCard";
 import { actionUnhideAll } from "./actionUnhideAll";
@@ -20,6 +21,7 @@ export function reducerFunction(
       "flip-card": "Guess",
       "end-turn": ["MoveMarker", "WaitEndTurnAck"],
       "take-won-card": "WaitForCardWinAck",
+      "reveal-after-game-over": "GameOver",
     };
 
   const isOkOrError = verifyGamePhase(
@@ -52,6 +54,9 @@ export function reducerFunction(
     }
     case "take-won-card": {
       return actionTakeWonCard(gameState, action.slotNumber, action.card);
+    }
+    case "reveal-after-game-over": {
+      return actionRevealAfterGameOver(gameState);
     }
     default:
       console.error("error, unhandled action type", action.type);

@@ -8,7 +8,8 @@ export type Action =
   | FlipCardAction
   | EndTurnAction
   | AckGoodGuessAction
-  | TakeWonCardAction;
+  | TakeWonCardAction
+  | RevealAfterGameOverAction;
 
 export interface HideAllAction {
   type: "hide-all";
@@ -16,6 +17,10 @@ export interface HideAllAction {
 
 export interface GuessAction {
   type: "guess";
+}
+
+export interface RevealAfterGameOverAction {
+  type: "reveal-after-game-over";
 }
 
 export interface PlaceMarkerAction {

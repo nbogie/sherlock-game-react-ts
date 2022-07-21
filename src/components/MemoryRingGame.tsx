@@ -25,6 +25,9 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
     function handleEndTurn() {
         dispatch({ type: "end-turn" });
     }
+    function handleRevealAfterGameOver() {
+        dispatch({ type: "reveal-after-game-over" });
+    }
     function handleTakeWonCard() {
         if (gameState.markerPos === null) {
             throw new Error("null markerPos during handling of takeWonCard");
@@ -43,6 +46,7 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
                 {gameState.phase === "Memorise" && <button onClick={handleStart}>Memorised - Hide them!</button>}
                 {(gameState.phase === "MoveMarker" || gameState.phase === "WaitEndTurnAck") && <button onClick={handleEndTurn}>End Turn!</button>}
                 {gameState.phase === "WaitForCardWinAck" && <button onClick={handleTakeWonCard}>Take won card!</button>}
+                {gameState.phase === "GameOver" && <button onClick={handleRevealAfterGameOver}>Reveal!</button>}
                 {<button onClick={handleUnhideAll}>Unhide all! (Cheat)</button>}
             </div>
             <PlayersView
