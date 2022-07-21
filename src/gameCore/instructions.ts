@@ -1,6 +1,6 @@
 import { GameState } from "./gameState";
 import { Phase } from "./phase";
-import { currentPlayer, nextPlayerName, peekNextPlayer } from "./players";
+import { currentPlayer, peekNextPlayer } from "./players";
 
 export function getInstructionForPhase(
   phase: Phase,
