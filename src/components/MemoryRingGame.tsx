@@ -9,10 +9,11 @@ import { PlayersView } from "./PlayersView";
 
 interface MemoryRingGameProps {
     numPlayers: NumberOfPlayers;
+    upToNCards: number;
 }
 
 export function MemoryRingGame(props: MemoryRingGameProps) {
-    const initialState: GameState = createInitialState(props.numPlayers);
+    const initialState: GameState = createInitialState(props.numPlayers, props.upToNCards);
     const [gameState, dispatch] = useReducer(reducerFunction, initialState);
 
     function handleStart() {
@@ -36,6 +37,7 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
         <div className="memoryRingGame">
             <div className="phase">Phase: {gameState.phase}</div>
 
+            {gameState.phase === "GameOver" && <div>Game Over!</div>}
 
             <div className="controls">
                 {gameState.phase === "Memorise" && <button onClick={handleStart}>Memorised - Hide them!</button>}
@@ -47,7 +49,7 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
                 players={gameState.players}
                 currentPlayerId={gameState.currentPlayerId}
             />
-
+            <div className="playUpTo">Playing first to {gameState.playUpToNCards} card(s)</div>
             <div className="instruction">{instruction}</div>
             <CardRingView
                 inPlayCards={gameState.inPlayCards}

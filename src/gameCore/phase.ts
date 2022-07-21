@@ -5,4 +5,5 @@ export type Phase =
   | "MoveMarker"
   | "HideAll"
   | "WaitForCardWinAck"
-  | "WaitEndTurnAck";
+  | "WaitEndTurnAck"
+  | "GameOver";

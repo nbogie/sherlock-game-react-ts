@@ -1,6 +1,6 @@
-import { GameState } from "../gameCore/gameState";
+import { findWinner, GameState } from "../gameCore/gameState";
 import { addCardToPlayerWinnings } from "../gameCore/players";
-import { Card, SlotNumber } from "../gameCore/types";
+import { Card, Player, SlotNumber } from "../gameCore/types";
 
 export function actionTakeWonCard(
   gameState: GameState,
@@ -18,16 +18,20 @@ export function actionTakeWonCard(
       : { ...c, isFaceUp: false }
   );
 
+  const newPlayers = gameState.players.map((p) =>
+    p.id === gameState.currentPlayerId ? addCardToPlayerWinnings(wonCard, p) : p
+  );
+  const winner: Player | null = findWinner(
+    newPlayers,
+    gameState.playUpToNCards
+  );
+
   return {
     ...gameState,
     deck: newDeck,
     inPlayCards: newInPlayCards,
     markerPos: null,
-    players: gameState.players.map((p) =>
-      p.id === gameState.currentPlayerId
-        ? addCardToPlayerWinnings(wonCard, p)
-        : p
-    ),
-    phase: "WaitEndTurnAck",
+    players: newPlayers,
+    phase: winner ? "GameOver" : "WaitEndTurnAck",
   };
 }

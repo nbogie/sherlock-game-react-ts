@@ -6,10 +6,12 @@ import { LobbyControls } from './LobbyControls';
 
 function App() {
   const [numOfPlayers, setNumOfPlayers] = useState<NumberOfPlayers>(2);
+  const [upToNCards, setUpToNCards] = useState<number>(6);
   const [gameStarted, setGameStarted] = useState(false);
 
-  function handleStartGame(n: NumberOfPlayers) {
+  function handleStartGame(n: NumberOfPlayers, upToNCards: number) {
     setNumOfPlayers(n);
+    setUpToNCards(upToNCards);
     setGameStarted(true);
 
   }
@@ -17,7 +19,7 @@ function App() {
     <div className="App">
       {
         gameStarted ?
-          <MemoryRingGame numPlayers={numOfPlayers} />
+          <MemoryRingGame numPlayers={numOfPlayers} upToNCards={upToNCards} />
           :
           <LobbyControls startGame={handleStartGame} />
       }

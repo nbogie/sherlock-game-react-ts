@@ -8,6 +8,7 @@ export function getInstructionForPhase(phase: Phase): string {
     Memorise: "Remember what you see!",
     MoveMarker: "Right?: Move Sherlock\nWrong?: end turn",
     WaitEndTurnAck: "End turn",
+    GameOver: "Game Over!",
     WaitForCardWinAck: "Take the card you won!",
   };
   return instructions[phase];
