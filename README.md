@@ -7,9 +7,10 @@ This is just meant as a React and CSS practice project.
 ## TODO:
 
 - [x] add the concept of players
-- [ ] add game over
+- [x] add game over
 - [ ] Don't allow the player to move the marker just anywhere
 - [ ] animations
+- [ ] add variant: each card has points (1 to 3, or perhaps just 2 or 3)
 
 # Getting Started with Create React App
 
