@@ -21,8 +21,8 @@
     "lint": "eslint src",
     "test": "react-scripts test --verbose",
     "eject": "react-scripts eject",
-    "architecture-dot": "depcruise --include-only '^src' --output-type dot src > dependencygraph.dot",
-    "architecture-svg": "depcruise --include-only '^src' --output-type dot src | dot -T svg > dependencygraph.svg"
+    "architecture-dot": "depcruise --include-only '^src' --output-type dot src > docs/dependencygraph.dot",
+    "architecture-svg": "depcruise --include-only '^src' --output-type dot src | dot -T svg > docs/dependencygraph.svg"
   },
   "eslintConfig": {
     "extends": [
