@@ -34,8 +34,9 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
     const instruction = getInstructionForPhase(gameState.phase);
     return (
         <div className="memoryRingGame">
-            <div className="phase">{gameState.phase}</div>
-            <div className="instruction">{instruction}</div>
+            <div className="phase">Phase: {gameState.phase}</div>
+
+
             <div className="controls">
                 {gameState.phase === "Memorise" && <button onClick={handleStart}>Memorised - Hide them!</button>}
                 {(gameState.phase === "MoveMarker" || gameState.phase === "WaitEndTurnAck") && <button onClick={handleEndTurn}>End Turn!</button>}
@@ -46,6 +47,8 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
                 players={gameState.players}
                 currentPlayerId={gameState.currentPlayerId}
             />
+
+            <div className="instruction">{instruction}</div>
             <CardRingView
                 inPlayCards={gameState.inPlayCards}
                 handleMarkerClick={(slotNumber, card: Card) => { dispatch({ type: "place-marker", slotNumber }) }}
