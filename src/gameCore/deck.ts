@@ -20,14 +20,14 @@ export function makeDeck(): Card[] {
   const misc2 = split(
     "🪁 🏹 🛹 🛼 🛷 🎾 🏅 🥁 🎸 🎻 🎺 🎤 🚁 🏎 🚌 🚜 🚂 ✈️ 🚀 🛶"
   );
-  const allEmojis = [
+  const allEmojis = shuffle([
     ...sample(animals, 9),
     ...sample(foods, 8),
     ...sample(clothing, 8),
     ...sample(creatures, 8),
     ...sample(misc1, 8),
     ...sample(misc2, 8),
-  ].slice(0, 49); //there should be 49 here, anyway.
+  ]).slice(0, 49); //there should be 49 here, anyway.
 
   const movementDistributions: [number, MovementAmount][] = [
     [13, 1],
@@ -36,14 +36,14 @@ export function makeDeck(): Card[] {
     [10, 4],
   ];
 
-  const movements: Movement[] = [];
-  for (const [count, value] of movementDistributions) {
-    const set: Movement[] = collect(count, (ix) => ({
-      direction: ix < count / 2 ? "left" : "right",
-      amount: value,
-    }));
-    movements.push(...set);
-  }
+  const movements: Movement[] = shuffle(
+    movementDistributions.flatMap(([count, value]) =>
+      collect(count, (ix) => ({
+        direction: ix < count / 2 ? "left" : "right",
+        amount: value,
+      }))
+    )
+  );
 
   const shuffledMovements = shuffle([...movements]);
   return shuffle([...allEmojis]).map((emoji, index) => {
