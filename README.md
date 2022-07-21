@@ -8,6 +8,7 @@ This is just meant as a React and CSS practice project.
 
 - [x] add the concept of players
 - [x] add game over
+- [ ] oops, it is not the current player who gets to make initial placement at the start of their turn, rather the person anticlockwise of them (counter to the order of players).
 - [ ] Don't allow the player to move the marker just anywhere
 - [ ] animations
 - [ ] add variant: each card has points (1 to 3, or perhaps just 2 or 3)
