@@ -28,3 +28,16 @@ export function addCardToPlayerWinnings(wonCard: Card, p: Player): Player {
   const newCards = [...p.cardsWon, { ...wonCard }];
   return { ...p, cardsWon: newCards };
 }
+
+export function peekNextPlayer(gameState: GameState): Player {
+  const nextId: string = nextPlayerId(gameState);
+  return gameState.players.find((p) => p.id === nextId)!;
+}
+
+export function nextPlayerName(gameState: GameState): string {
+  return peekNextPlayer(gameState).name;
+}
+
+export function currentPlayer(gameState: GameState): Player {
+  return gameState.players.find((p) => p.id === gameState.currentPlayerId)!;
+}

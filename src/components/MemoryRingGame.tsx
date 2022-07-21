@@ -33,7 +33,7 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
         dispatch({ type: "take-won-card", slotNumber: gameState.markerPos, card: cardAtPos(gameState.inPlayCards, gameState.markerPos) });
     }
 
-    const instruction = getInstructionForPhase(gameState.phase);
+    const instruction = getInstructionForPhase(gameState.phase, gameState);
     return (
         <div className="memoryRingGame">
             <div className="phase">Phase: {gameState.phase}</div>
