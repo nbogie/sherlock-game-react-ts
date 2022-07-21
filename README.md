@@ -6,7 +6,7 @@ This is just meant as a React and CSS practice project.
 
 ## TODO:
 
-- [ ] add the concept of players
+- [x] add the concept of players
 - [ ] add game over
 - [ ] Don't allow the player to move the marker just anywhere
 - [ ] animations
