@@ -4,6 +4,6 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/Game Phase/i);
-  expect(linkElement).toBeInTheDocument();
+  const elem = screen.getByText(/Memory Game/i);
+  expect(elem).toBeInTheDocument();
 });

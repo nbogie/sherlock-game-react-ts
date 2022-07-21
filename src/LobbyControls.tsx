@@ -9,6 +9,8 @@ export function LobbyControls(props: LobbyControlsProps) {
 
     return (
         <div>
+            <h1>Memory Game - menu</h1>
+
             <input
                 type="number"
                 value={numOfPlayers}
