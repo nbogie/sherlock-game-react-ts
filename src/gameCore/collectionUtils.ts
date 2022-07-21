@@ -45,3 +45,7 @@ export function countUnique<T>(arr: T[]): number {
   const set = new Set(arr);
   return set.size;
 }
+
+export function sample<T>(arr: T[], n: number): T[] {
+  return shuffle([...arr]).slice(0, Math.min(n, arr.length));
+}

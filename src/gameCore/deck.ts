@@ -1,13 +1,35 @@
-import { collect, shuffle } from "./collectionUtils";
+import { collect, sample, shuffle } from "./collectionUtils";
 import { Card, Movement, MovementAmount, SlotNumber } from "./types";
 
 export function makeDeck(): Card[] {
-  const allEmojis: string[] =
-    "🐶 🦁 🦊 🐝 🐤 🦄 🦖 🐲 🎺 🚁 ❤️ 🌈 ⚽️ 🍀 💎 🎁 🏴‍☠️ 🎈 🏓 ☃️ 🌼 🍄 🐚 👓 🎩 🎓 👑 🎃 🍫 🍰 🍕 🍓 🍉 🥕 🍭 🍦 👢 🧤 🪚 📸 🔒 ✂️ 🧲 ⏰ 🩺 🪣 ✏️ 🔑 💡"
-      .split(" ")
-      .slice(0, 49); //there should be 49 here, anyway.
+  const split = (str: string) => str.split(" ");
 
-  const distributions: [number, MovementAmount][] = [
+  const foods = split(
+    "🍫 🍰 🍕 🍓 🍉 🥕 🍭 🍦 🍋 🍌 🍇 🥭 🥥 🥝 🥑 🥦 🌽 🫒 🥖 🧀 🥞 🥓 🍗 🍔 🌮 🥗 🍬 🍩 🍪 ☕"
+  );
+  const animals = split(
+    "🐶 🦁 🦊 🐝 🐤 🦄 🦖 🐲 🐵 🦧 🐺 🐯 🐮 🐷 🐖 🦒 🐘 🦏 🦛 🐹 🐰 🐿️ 🦔 🦇 🐻 🐨 🐼 🐧 🦉 🐸 🐊 🐢 🐍 🐳 🐬 🦈 🐙 🐌 🦋 🐛 🐜 🕷️ 🦂 🦞 🦑 ☃️ 🐚"
+  );
+  const creatures = split("👨🏼‍🚒 🧚🏼 👽 🥷🏽 ☠️ 👩🏼‍🍳 🧙🏽‍♂️ 🧛🏻‍♀️ 🧟 👩🏾‍🔬 🎃");
+
+  const clothing = split("👓 🕶 🎩 🧢 👑 🪖 👢 🧦 👠 🩴 🧤 🧣 🌂 🎒");
+
+  const misc1 = split(
+    "❤️ 🌈 ⚽️ 💎 🎁 🏴‍☠️ 🎈 🏓 🪚 📸 🔒 🧵 🪡 ✂️ 🧲 ⏰ 🎲 🩺 🪣 ✏️ 🔑 💡 🌼 🍄 🌵 🌴 🍁 🍀 🌙 🌍 🔥 🌪 ⚡️ 🌊 ⚓️ ⛺️ 🧸"
+  );
+  const misc2 = split(
+    "🪁 🏹 🛹 🛼 🛷 🎾 🏅 🥁 🎸 🎻 🎺 🎤 🚁 🏎 🚌 🚜 🚂 ✈️ 🚀 🛶"
+  );
+  const allEmojis = [
+    ...sample(animals, 9),
+    ...sample(foods, 8),
+    ...sample(clothing, 8),
+    ...sample(creatures, 8),
+    ...sample(misc1, 8),
+    ...sample(misc2, 8),
+  ].slice(0, 49); //there should be 49 here, anyway.
+
+  const movementDistributions: [number, MovementAmount][] = [
     [13, 1],
     [13, 2],
     [13, 3],
@@ -15,7 +37,7 @@ export function makeDeck(): Card[] {
   ];
 
   const movements: Movement[] = [];
-  for (const [count, value] of distributions) {
+  for (const [count, value] of movementDistributions) {
     const set: Movement[] = collect(count, (ix) => ({
       direction: ix < count / 2 ? "left" : "right",
       amount: value,
