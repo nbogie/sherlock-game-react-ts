@@ -4,7 +4,6 @@ export type Action =
   | HideAllAction
   | GuessAction
   | PlaceMarkerAction
-  | UnhideAllAction
   | FlipCardAction
   | EndTurnAction
   | AckGoodGuessAction
@@ -32,10 +31,6 @@ export interface FlipCardAction {
   type: "flip-card";
   slotNumber: SlotNumber;
   card: Card;
-}
-
-export interface UnhideAllAction {
-  type: "unhide-all";
 }
 
 export interface AckGoodGuessAction {

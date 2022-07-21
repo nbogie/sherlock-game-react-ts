@@ -7,7 +7,6 @@ import { actionPlaceMarker } from "./actionPlaceMarker";
 import { actionRevealAfterGameOver } from "./actionRevealAfterGameOver";
 import { Action } from "./actions";
 import { actionTakeWonCard } from "./actionTakeWonCard";
-import { actionUnhideAll } from "./actionUnhideAll";
 
 export function reducerFunction(
   gameState: GameState,
@@ -17,7 +16,6 @@ export function reducerFunction(
     {
       "hide-all": "Memorise",
       "place-marker": ["InitialPlacement", "MoveMarker"],
-      "unhide-all": "any",
       "flip-card": "Guess",
       "end-turn": ["MoveMarker", "WaitEndTurnAck"],
       "take-won-card": "WaitForCardWinAck",
@@ -39,9 +37,6 @@ export function reducerFunction(
   switch (action.type) {
     case "hide-all": {
       return actionHideAll(gameState);
-    }
-    case "unhide-all": {
-      return actionUnhideAll(gameState);
     }
     case "place-marker": {
       return actionPlaceMarker(gameState, action.slotNumber);

@@ -139,9 +139,9 @@ button {
   align-items: flex-start;
 }
 
-.player.active {
-  /* border: 2px solid red; */
-}
+/* .player.active {
+  border: 2px solid red;
+} */
 
 .player.inactive {
   opacity: 0.5;

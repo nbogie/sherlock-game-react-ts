@@ -19,9 +19,7 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
     function handleStart() {
         dispatch({ type: "hide-all" });
     }
-    function handleUnhideAll() {
-        dispatch({ type: "unhide-all" });
-    }
+
     function handleEndTurn() {
         dispatch({ type: "end-turn" });
     }
@@ -47,7 +45,6 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
                 {(gameState.phase === "MoveMarker" || gameState.phase === "WaitEndTurnAck") && <button onClick={handleEndTurn}>End Turn!</button>}
                 {gameState.phase === "WaitForCardWinAck" && <button onClick={handleTakeWonCard}>Take won card!</button>}
                 {gameState.phase === "GameOver" && <button onClick={handleRevealAfterGameOver}>Reveal!</button>}
-                {<button onClick={handleUnhideAll}>Unhide all! (Cheat)</button>}
             </div>
             <PlayersView
                 players={gameState.players}
