@@ -4,6 +4,5 @@ export type Phase =
   | "Guess"
   | "MoveMarker"
   | "HideAll"
-  | "TakeCard"
   | "WaitForCardWinAck"
   | "WaitEndTurnAck";

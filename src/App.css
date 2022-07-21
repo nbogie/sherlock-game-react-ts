@@ -149,3 +149,17 @@ button {
 span.active {
   font-weight: bold;
 }
+
+.instruction {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 3px solid gray; */
+}

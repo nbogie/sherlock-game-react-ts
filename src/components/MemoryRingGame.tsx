@@ -2,6 +2,7 @@ import { useReducer } from "react";
 import { reducerFunction } from "../actions/reducerFunction";
 import { cardAtPos } from "../gameCore/deck";
 import { createInitialState, GameState } from "../gameCore/gameState";
+import { getInstructionForPhase } from "../gameCore/instructions";
 import { Card, NumberOfPlayers } from "../gameCore/types";
 import { CardRingView } from "./CardRingView";
 import { PlayersView } from "./PlayersView";
@@ -30,9 +31,11 @@ export function MemoryRingGame(props: MemoryRingGameProps) {
         dispatch({ type: "take-won-card", slotNumber: gameState.markerPos, card: cardAtPos(gameState.inPlayCards, gameState.markerPos) });
     }
 
+    const instruction = getInstructionForPhase(gameState.phase);
     return (
         <div className="memoryRingGame">
-            Game Phase: {gameState.phase}
+            <div className="phase">{gameState.phase}</div>
+            <div className="instruction">{instruction}</div>
             <div className="controls">
                 {gameState.phase === "Memorise" && <button onClick={handleStart}>Memorised - Hide them!</button>}
                 {(gameState.phase === "MoveMarker" || gameState.phase === "WaitEndTurnAck") && <button onClick={handleEndTurn}>End Turn!</button>}
