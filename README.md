@@ -13,6 +13,10 @@ This is just meant as a React and CSS practice project.
 - [ ] animations
 - [ ] add variant: each card has points (1 to 3, or perhaps just 2 or 3)
 
+# State diagram
+
+![image](https://user-images.githubusercontent.com/69844/181218066-ef50ca3e-04bc-4bd2-9f7c-9f9d7b28d465.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
