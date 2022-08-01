@@ -17,6 +17,17 @@ This is just meant as a React and CSS practice project.
 
 ![image](https://user-images.githubusercontent.com/69844/181218066-ef50ca3e-04bc-4bd2-9f7c-9f9d7b28d465.png)
 
+# Dependency Graph
+
+![dependencyGraph](./docs/dependencygraph.svg)
+
+How to generate the dependency graph:
+**if you have graphviz installed**, generate with `yarn run architecture-svg`
+
+**otherwise**, use `yarn run architecture-dot` and copy the text of the generated .dot file in `docs/` to an online graphviz tool (a random example https://dreampuf.github.io/GraphvizOnline )
+
+This graph is generated with the [dependency-cruiser](https://www.npmjs.com/package/dependency-cruiser) library.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
