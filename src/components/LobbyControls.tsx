@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NumberOfPlayers } from "./gameCore/types";
+import { NumberOfPlayers } from "../gameCore/types";
 
 interface LobbyControlsProps {
     startGame: (numPlayers: NumberOfPlayers, upToNCards: number) => void;

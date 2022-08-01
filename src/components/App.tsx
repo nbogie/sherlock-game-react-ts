@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import { MemoryRingGame } from './components/MemoryRingGame';
-import { NumberOfPlayers } from './gameCore/types';
+import { MemoryRingGame } from './MemoryRingGame';
+import { NumberOfPlayers } from '../gameCore/types';
 import { LobbyControls } from './LobbyControls';
 
 function App() {
